@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover Your Computer Science Path</title>
+  <style>
+    /* CSS Code */
+    body {
+      font-family: sans-serif;
+      background-color: #1e90ff; /* Blue background */
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #wrapper {
+      width: 650px;
+      background: #f7faff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+    h1 {
+      color: #1e90ff;
+    }
+    h2 {
+      margin: 10px 0;
+      color: #333;
+    }
+    input {
+      margin: 5px 10px;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 20px 5px;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #submit {
+      background-color: #1e90ff;
+    }
+    #reset {
+      background-color: #ff6b6b;
+    }
+    #answer {
+      border: 1px dashed #ccc;
+      background: #e0f7ff;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <h1>Discover Your Computer Science Path</h1>
+    <p>Answer the questions below to find out what kind of computer scientist you might be!</p>
+    
+    <form id="quiz">
+      <!-- Question 1 -->
+      <h2>What inspires you the most in a project?</h2>
+      <label><input type="radio" name="q1" value="c1"> Uncovering new knowledge</label><br />
+      <label><input type="radio" name="q1" value="c2"> Helping others reach their goals</label><br />
+      <label><input type="radio" name="q1" value="c3"> Creating entertainment and joy</label><br />
+      <label><input type="radio" name="q1" value="c4"> Pushing boundaries and innovation</label><br />
+      
+      <!-- Question 2 -->
+      <h2>How would you describe your ideal workspace?</h2>
+      <label><input type="radio" name="q2" value="c1"> Equipped with state-of-the-art technology</label><br />
+      <label><input type="radio" name="q2" value="c2"> A place where I can make a difference</label><br />
+      <label><input type="radio" name="q2" value="c3"> Surrounded by creativity and inspiration</label><br />
+      <label><input type="radio" name="q2" value="c4"> A home office or relaxed setting</label><br />
+      
+      <!-- Question 3 -->
+      <h2>Who do you admire most in the tech world?</h2>
+      <label><input type="radio" name="q3" value="c1"> Visionaries who transform industries</label><br />
+      <label><input type="radio" name="q3" value="c2"> Those dedicated to community support</label><br />
+      <label><input type="radio" name="q3" value="c3"> Creative pioneers in media and gaming</label><br />
+      <label><input type="radio" name="q3" value="c4"> Innovators who take bold steps</label><br />
+      
+      <!-- Question 4 -->
+      <h2>How do you approach challenges?</h2>
+      <label><input type="radio" name="q4" value="c1"> Research independently until I understand</label><br />
+      <label><input type="radio" name="q4" value="c2"> Consult others for insights and advice</label><br />
+      <label><input type="radio" name="q4" value="c3"> Step away and return with fresh ideas</label><br />
+      <label><input type="radio" name="q4" value="c4"> Try different methods until it works</label><br />
+      
+      <!-- Additional Question 5 -->
+      <h2>What type of projects do you enjoy most?</h2>
+      <label><input type="radio" name="q5" value="c1"> Data analysis and breakthroughs</label><br />
+      <label><input type="radio" name="q5" value="c2"> Community-driven or social good projects</label><br />
+      <label><input type="radio" name="q5" value="c3"> Digital art, games, and interactive media</label><br />
+      <label><input type="radio" name="q5" value="c4"> High-stakes, competitive projects</label><br />
+      
+      <!-- Additional Question 6 -->
+      <h2>How do you spend your free time?</h2>
+      <label><input type="radio" name="q6" value="c1"> Reading about science and discoveries</label><br />
+      <label><input type="radio" name="q6" value="c2"> Volunteering or helping others</label><br />
+      <label><input type="radio" name="q6" value="c3"> Playing games or making art</label><br />
+      <label><input type="radio" name="q6" value="c4"> Brainstorming business ideas</label><br />
+      
+      <button type="button" id="submit" onclick="tabulateAnswers()">See Your Result</button>
+      <button type="reset" id="reset" onclick="resetAnswer()">Start Over</button>
+    </form>
+    
+    <div id="answer">Your result will show up here!</div>
+  </div>
+
+  <script>
+    // JavaScript Code
+    function tabulateAnswers() {
+      var c1score = 0;
+      var c2score = 0;
+      var c3score = 0;
+      var c4score = 0;
+      
+      var choices = document.getElementsByTagName('input');
+      for (var i = 0; i < choices.length; i++) {
+        if (choices[i].checked) {
+          if (choices[i].value == 'c1') c1score++;
+          if (choices[i].value == 'c2') c2score++;
+          if (choices[i].value == 'c3') c3score++;
+          if (choices[i].value == 'c4') c4score++;
+        }
+      }
+      
+      var maxscore = Math.max(c1score, c2score, c3score, c4score);
+      var answerbox = document.getElementById('answer');
+      if (c1score == maxscore) {
+        answerbox.innerHTML = "You are a Data Scientist!";
+      } else if (c2score == maxscore) {
+        answerbox.innerHTML = "You are a Community-Oriented Developer!";
+      } else if (c3score == maxscore) {
+        answerbox.innerHTML = "You are a Creative Technologist!";
+      } else if (c4score == maxscore) {
+        answerbox.innerHTML = "You are an Entrepreneurial Innovator!";
+      }
+    }
+
+    function resetAnswer() {
+      document.getElementById('answer').innerHTML = "Your result will show up here!";
+    }
+  </script>
+</body>
+</html>
